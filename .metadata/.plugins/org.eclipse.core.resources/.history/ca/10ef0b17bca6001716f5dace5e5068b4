@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean id="triangle" class="org.mihir.spring.Triangle" >
+		
+		<property name="pointA" ref="zeroPoint" />
+		<property name="pointB" ref="onePoint" />
+		<property name="pointC" ref="twoPoint" />
+		
+		<!--  inner bean example, uncomment it when want to use -->
+		
+		<!-- <property name="pointB" >
+		
+			<bean class="org.mihir.spring.Point">
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>	
+			</bean> 
+		
+		</property> -->
+		
+	</bean>
+	
+	<!--<property name="type" value="equilateral"></property>
+		<constructor-arg value="Equlateral" />
+		<constructor-arg type="int" value="20" />
+	    OR <constructor-arg index="0" value="20" /> -->
+		 
+		<bean id="zeroPoint" class="org.mihir.spring.Point">
+			<property name="x" value="0"/>
+			<property name="y" value="0"/>	
+		</bean>
+		
+		<bean id="onePoint" class="org.mihir.spring.Point">
+			<property name="x" value="-20"/>
+			<property name="y" value="0"/>	
+		</bean> 
+		
+		<bean id="twoPoint" class="org.mihir.spring.Point">
+			<property name="x" value="20"/>
+			<property name="y" value="0"/>	
+		</bean>  
+		
+		<alias name="triangle" alias="triangle-alias"></alias>
+</beans>

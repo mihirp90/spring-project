@@ -1,0 +1,5 @@
+package org.mihir.spring;
+
+public interface Shape {
+
+}

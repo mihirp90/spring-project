@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- <bean id="triangle" class="org.mihir.spring.Triangle" autowire= "byName" scope="singleton"> -->
+		
+		<!-- <property name="pointA" ref="zeroPoint" />
+		<property name="pointB" ref="onePoint" />
+		<property name="pointC" ref="twoPoint" /> -->
+		
+		<!-- using list collection -->
+		
+		<!-- <property name="points"  >
+		
+			<list>
+				<ref bean="zeroPoint" />
+				<ref bean="onePoint" />
+				<ref bean="twoPoint" />
+			</list>
+			
+		</property> -->
+		
+		<!--  inner bean example, uncomment it when want to use -->
+		
+		<!-- <property name="pointB" >
+		
+			<bean class="org.mihir.spring.Point">
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>	
+			</bean> 
+		
+		</property> -->
+		
+	<!-- </bean> -->
+	
+	<!--<property name="type" value="equilateral"></property>
+		<constructor-arg value="Equlateral" />
+		<constructor-arg type="int" value="20" />
+	    OR <constructor-arg index="0" value="20" /> -->
+		 
+		<bean id="pointA" class="org.mihir.spring.Point">
+			<qualifier value="circleRelated" />
+			<property name="x" value="0"/> <!-- place holder -->
+			<property name="y" value="0"/>	
+		</bean>
+		<!-- <bean id="center" class="org.mihir.spring.Point">
+			<property name="x" value="${center.pointX}"/> place holder
+			<property name="y" value="${center.pointY}"/>	
+		</bean> -->
+		
+		 <bean id="pointB" class="org.mihir.spring.Point">
+			<property name="x" value="-20"/>
+			<property name="y" value="0"/>	
+		</bean> 
+		
+		<bean id="pointC" class="org.mihir.spring.Point">
+			<property name="x" value="20"/>
+			<property name="y" value="0"/>	
+		</bean> 
+		
+		<!-- <alias name="triangle" alias="triangle-alias"/> -->
+		
+		<!-- <bean class="org.mihir.spring.DisplayNameBeanPostProcessor" /> -->
+		<bean class="org.mihir.spring.MyBeanFactoryPP" />
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location" value="pointconfig.properties"></property>
+		</bean>
+		
+		<!-- <bean id="circle" class="org.mihir.spring.Circle" autowire= "byName" scope="singleton">
+			<property name="center" ref="pointA"></property>
+		</bean> -->
+		<bean id="circle" class="org.mihir.spring.Circle">
+			<property name="center" ref="pointA"></property>
+		</bean> 
+		<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
+		
+		 <!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+		 
+		 <!--instead of adding every time different annotation we can use.. -->
+		 <context:annotation-config/>
+		 
+</beans>
